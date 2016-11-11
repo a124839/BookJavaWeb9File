@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="fileupload" class="action.FileUpload">
+			<result>/success.jsp</result>			
+			<!-- 使用拦截器 -->
+			<interceptor-ref name="defaultStack">
+				<!-- 设置文件大小 -->
+				<param name="fileUpload.maximumSize">10000000000</param>
+				<!-- 设置文件类型 -->
+				<param name="fileUpload.allowedTypesSet">image/jpg,image/png,image/jpeg</param>
+			</interceptor-ref>
+		</action>
+	</package>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+</struts>
